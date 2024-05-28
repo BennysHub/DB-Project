@@ -18,7 +18,7 @@ ALTER TABLE `advising`
 ALTER TABLE `advising`
   ADD CONSTRAINT `ADVISING_LECTURER_ID` FOREIGN KEY (`LECTURER_ID`) REFERENCES `lecturer` (`ID`),
   ADD CONSTRAINT `ADVISING_STUDENT_ID` FOREIGN KEY (`STUDENT_ID`) REFERENCES `student` (`ID`);
-
+COMMIT;
 -- --------------------------------------------------------
 
 CREATE TABLE `assingments` (
@@ -38,7 +38,7 @@ ALTER TABLE `assingments`
 
 ALTER TABLE `assingments`
   ADD CONSTRAINT `ASSINGMENT_COURSE_NUMBER` FOREIGN KEY (`COURSE_NUMBER`) REFERENCES `course` (`COURSE_NUMBER`);
-
+COMMIT;
 -- --------------------------------------------------------
 
 CREATE TABLE `building` (
@@ -49,7 +49,7 @@ CREATE TABLE `building` (
 
 ALTER TABLE `building`
   ADD PRIMARY KEY (`ID`);
-
+COMMIT;
 -- --------------------------------------------------------
 
 CREATE TABLE `course` (
@@ -61,7 +61,7 @@ CREATE TABLE `course` (
 
 ALTER TABLE `course`
   ADD PRIMARY KEY (`COURSE_NUMBER`);
-
+COMMIT;
 -- --------------------------------------------------------
 
 CREATE TABLE `departments` (
@@ -80,7 +80,7 @@ ALTER TABLE `departments`
 ALTER TABLE `departments`
   ADD CONSTRAINT `DEPARTMENT_BUILDING_ID` FOREIGN KEY (`BUILDING_ID`) REFERENCES `building` (`ID`),
   ADD CONSTRAINT `DEPARTMENT_HEAD_PERSON_ID` FOREIGN KEY (`DEPARTMENT_HEAD`) REFERENCES `person` (`ID`);
-
+COMMIT;
 -- --------------------------------------------------------
 
 CREATE TABLE `lecturer` (
@@ -94,7 +94,7 @@ ALTER TABLE `lecturer`
 
 ALTER TABLE `lecturer`
   ADD CONSTRAINT `LECTURER_IS_PERSON_ID` FOREIGN KEY (`ID`) REFERENCES `person` (`ID`);
-
+COMMIT;
 -- --------------------------------------------------------
 
 CREATE TABLE `lecturer_in_department` (
@@ -109,7 +109,7 @@ ALTER TABLE `lecturer_in_department`
 ALTER TABLE `lecturer_in_department`
   ADD CONSTRAINT `lecturer_in_department_ibfk_1` FOREIGN KEY (`DEPARTMENT_ID`) REFERENCES `departments` (`DEPARTMENT_ID`),
   ADD CONSTRAINT `lecturer_in_department_ibfk_2` FOREIGN KEY (`LECTURE_ID`) REFERENCES `lecturer` (`ID`);
-
+COMMIT;
 -- --------------------------------------------------------
 
 CREATE TABLE `lectures` (
@@ -133,7 +133,7 @@ ALTER TABLE `lectures`
 
 ALTER TABLE `lectures`
   ADD CONSTRAINT `LECTUR_IS_IN_BUILDING_ID` FOREIGN KEY (`BUILDING_ID`,`ROOM_NUMBER`) REFERENCES `room` (`BUILDING_ID`, `ROOM_NUMBER`);
-
+COMMIT;
 -- --------------------------------------------------------
 
 CREATE TABLE `person` (
@@ -147,7 +147,7 @@ CREATE TABLE `person` (
 
 ALTER TABLE `person`
   ADD PRIMARY KEY (`ID`);
-
+COMMIT;
 -- --------------------------------------------------------
 
 CREATE TABLE `room` (
@@ -162,7 +162,7 @@ ALTER TABLE `room`
 
 ALTER TABLE `room`
   ADD CONSTRAINT `ROOM_IN_BUILDING` FOREIGN KEY (`BUILDING_ID`) REFERENCES `building` (`ID`);
-
+COMMIT;
 -- --------------------------------------------------------
 
 CREATE TABLE `student` (
@@ -174,7 +174,7 @@ ALTER TABLE `student`
 
 ALTER TABLE `student`
   ADD CONSTRAINT `STUDENT_IS_PERSON_ID` FOREIGN KEY (`ID`) REFERENCES `person` (`ID`);
-
+COMMIT;
 -- --------------------------------------------------------
 
 CREATE TABLE `teaching` (
