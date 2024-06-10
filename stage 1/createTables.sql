@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `advising`
+-- Table structure for table `advisings`
 --
 
-CREATE TABLE `advising` (
+CREATE TABLE `advisings` (
   `ADVISING_ID` int(11) UNSIGNED NOT NULL,
   `LECTURER_ID` varchar(9) NOT NULL,
   `STUDENT_ID` varchar(9) NOT NULL,
@@ -37,10 +37,10 @@ CREATE TABLE `advising` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `advising`
+-- Dumping data for table `advisings`
 --
 
-INSERT INTO `advising` (`ADVISING_ID`, `LECTURER_ID`, `STUDENT_ID`, `TIME_START`, `TIME_END`, `ADVISING_NOTES`) VALUES
+INSERT INTO `advisings` (`ADVISING_ID`, `LECTURER_ID`, `STUDENT_ID`, `TIME_START`, `TIME_END`, `ADVISING_NOTES`) VALUES
 (35, '011817755', '596857887', '1991-09-07 19:00:00', '1991-09-07 19:20:00', NULL),
 (36, '151036784', '180628164', '1995-07-27 14:15:00', '1995-07-27 14:30:00', NULL),
 (37, '748944948', '053014973', '1990-10-03 15:45:00', '1990-10-03 16:00:00', 'Suggest using apps for organization and productivity'),
@@ -5511,10 +5511,10 @@ INSERT INTO `lectures` (`LECTURE_ID`, `LECTURER_ID`, `COURSE_NUMBER`, `START_TIM
 -- --------------------------------------------------------
 
 --
--- Table structure for table `person`
+-- Table structure for table `persons`
 --
 
-CREATE TABLE `person` (
+CREATE TABLE `persons` (
   `ID` varchar(9) NOT NULL,
   `FIRST_NAME` varchar(20) NOT NULL,
   `LAST_NAME` varchar(20) NOT NULL,
@@ -5525,10 +5525,10 @@ CREATE TABLE `person` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `person`
+-- Dumping data for table `persons`
 --
 
-INSERT INTO `person` (`ID`, `FIRST_NAME`, `LAST_NAME`, `EMAIL`, `PHONE_NUMBER`, `ADDRESS`, `BIRTH_DATE`) VALUES
+INSERT INTO `persons` (`ID`, `FIRST_NAME`, `LAST_NAME`, `EMAIL`, `PHONE_NUMBER`, `ADDRESS`, `BIRTH_DATE`) VALUES
 ('000861738', 'Anetta', 'Innerstone', 'ainnerstonefm@google.ca', '641-354-6342', 'PO Box 17843', '1995-09-08'),
 ('001557940', 'Odey', 'Dureden', 'oduredenaw@noaa.gov', '309-403-7156', '11th Floor', '1983-02-19'),
 ('005393341', 'Kalle', 'Soffe', 'ksoffe9y@bandcamp.com', '586-928-7510', '11th Floor', '1981-12-29'),
@@ -6013,7 +6013,7 @@ INSERT INTO `person` (`ID`, `FIRST_NAME`, `LAST_NAME`, `EMAIL`, `PHONE_NUMBER`, 
 ('576401226', 'Gabriella', 'Lippitt', 'glippittam@miibeian.gov.cn', '132-834-3544', 'Suite 73', '1997-04-08'),
 ('577535044', 'Tab', 'Pulman', 'tpulmana7@facebook.com', '888-932-1717', 'Apt 938', '1986-05-20'),
 ('578144864', 'Boycie', 'Aberdein', 'baberdeinba@biblegateway.com', '257-574-8468', 'Suite 42', '1991-06-12');
-INSERT INTO `person` (`ID`, `FIRST_NAME`, `LAST_NAME`, `EMAIL`, `PHONE_NUMBER`, `ADDRESS`, `BIRTH_DATE`) VALUES
+INSERT INTO `persons` (`ID`, `FIRST_NAME`, `LAST_NAME`, `EMAIL`, `PHONE_NUMBER`, `ADDRESS`, `BIRTH_DATE`) VALUES
 ('579458528', 'Dorry', 'Petit', 'dpetit73@spotify.com', '621-882-7328', 'Room 1955', '1994-10-24'),
 ('579737675', 'Albertine', 'Mamwell', 'amamwellc6@youtu.be', '156-673-6139', 'PO Box 63372', '1984-11-23'),
 ('584708553', 'Ebenezer', 'Kemwal', 'ekemwalg5@usgs.gov', '802-108-5023', '6th Floor', '1976-05-27'),
@@ -7665,20 +7665,20 @@ INSERT INTO `students` (`ID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `teaching`
+-- Table structure for table `teachings`
 --
 
-CREATE TABLE `teaching` (
+CREATE TABLE `teachings` (
   `LECTURER_ID` varchar(9) NOT NULL,
   `STUDENT_ID` varchar(9) NOT NULL,
   `COURSE_NUMBER` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `teaching`
+-- Dumping data for table `teachings`
 --
 
-INSERT INTO `teaching` (`LECTURER_ID`, `STUDENT_ID`, `COURSE_NUMBER`) VALUES
+INSERT INTO `teachings` (`LECTURER_ID`, `STUDENT_ID`, `COURSE_NUMBER`) VALUES
 ('000861738', '135161907', 155),
 ('000861738', '194406725', 15),
 ('000861738', '256315391', 143),
@@ -9315,7 +9315,7 @@ INSERT INTO `teaching` (`LECTURER_ID`, `STUDENT_ID`, `COURSE_NUMBER`) VALUES
 ('541312263', '490189260', 12),
 ('541312263', '504112635', 184),
 ('541312263', '530497654', 38);
-INSERT INTO `teaching` (`LECTURER_ID`, `STUDENT_ID`, `COURSE_NUMBER`) VALUES
+INSERT INTO `teachings` (`LECTURER_ID`, `STUDENT_ID`, `COURSE_NUMBER`) VALUES
 ('541312263', '579458528', 58),
 ('545248470', '028879880', 76),
 ('545248470', '591146617', 48),
@@ -10681,7 +10681,7 @@ INSERT INTO `teaching` (`LECTURER_ID`, `STUDENT_ID`, `COURSE_NUMBER`) VALUES
 --
 -- Indexes for table `advising`
 --
-ALTER TABLE `advising`
+ALTER TABLE `advisings`
   ADD PRIMARY KEY (`ADVISING_ID`),
   ADD UNIQUE KEY `LECTURER_ID` (`LECTURER_ID`,`STUDENT_ID`,`TIME_START`),
   ADD KEY `ADVISING_STUDENT_ID` (`STUDENT_ID`);
@@ -10741,9 +10741,9 @@ ALTER TABLE `lectures`
   ADD KEY `LECTUR_IS_IN_BUILDING_ID` (`BUILDING_ID`,`ROOM_NUMBER`);
 
 --
--- Indexes for table `person`
+-- Indexes for table `persons`
 --
-ALTER TABLE `person`
+ALTER TABLE `persons`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -10760,9 +10760,9 @@ ALTER TABLE `students`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `teaching`
+-- Indexes for table `teachings`
 --
-ALTER TABLE `teaching`
+ALTER TABLE `teachings`
   ADD PRIMARY KEY (`LECTURER_ID`,`STUDENT_ID`,`COURSE_NUMBER`),
   ADD KEY `COURSE_TAUGHT` (`COURSE_NUMBER`);
 
@@ -10771,9 +10771,9 @@ ALTER TABLE `teaching`
 --
 
 --
--- AUTO_INCREMENT for table `advising`
+-- AUTO_INCREMENT for table `advisings`
 --
-ALTER TABLE `advising`
+ALTER TABLE `advisings`
   MODIFY `ADVISING_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2034;
 
 --
@@ -10793,9 +10793,9 @@ ALTER TABLE `lectures`
 --
 
 --
--- Constraints for table `advising`
+-- Constraints for table `advisings`
 --
-ALTER TABLE `advising`
+ALTER TABLE `advisings`
   ADD CONSTRAINT `ADVISING_LECTURER_ID` FOREIGN KEY (`LECTURER_ID`) REFERENCES `lecturers` (`ID`),
   ADD CONSTRAINT `ADVISING_STUDENT_ID` FOREIGN KEY (`STUDENT_ID`) REFERENCES `students` (`ID`);
 
@@ -10822,7 +10822,7 @@ ALTER TABLE `head_of_department`
 -- Constraints for table `lecturers`
 --
 ALTER TABLE `lecturers`
-  ADD CONSTRAINT `LECTURER_IS_PERSON` FOREIGN KEY (`ID`) REFERENCES `person` (`ID`);
+  ADD CONSTRAINT `LECTURER_IS_PERSON` FOREIGN KEY (`ID`) REFERENCES `persons` (`ID`);
 
 --
 -- Constraints for table `lecturer_in_department`
@@ -10847,12 +10847,12 @@ ALTER TABLE `rooms`
 -- Constraints for table `students`
 --
 ALTER TABLE `students`
-  ADD CONSTRAINT `STUDENT_IS_PERSON_ID` FOREIGN KEY (`ID`) REFERENCES `person` (`ID`);
+  ADD CONSTRAINT `STUDENT_IS_PERSON_ID` FOREIGN KEY (`ID`) REFERENCES `persons` (`ID`);
 
 --
--- Constraints for table `teaching`
+-- Constraints for table `teachings`
 --
-ALTER TABLE `teaching`
+ALTER TABLE `teachings`
   ADD CONSTRAINT `COURSE_TAUGHT` FOREIGN KEY (`COURSE_NUMBER`) REFERENCES `courses` (`COURSE_NUMBER`),
   ADD CONSTRAINT `LECTURER_TEACHING` FOREIGN KEY (`LECTURER_ID`) REFERENCES `lecturers` (`ID`),
   ADD CONSTRAINT `STUDENTS_STUDY` FOREIGN KEY (`LECTURER_ID`) REFERENCES `students` (`ID`);
