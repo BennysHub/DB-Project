@@ -101,3 +101,107 @@ ALTER TABLE `students`
 ALTER TABLE `students_in_groups`
   ADD PRIMARY KEY (`GROUP_ID`,`STUDENT_ID`),
   ADD KEY `STUDENT_ID` (`STUDENT_ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `advising`
+--
+ALTER TABLE `advising`
+  MODIFY `ADVISING_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2034;
+
+--
+-- AUTO_INCREMENT for table `assignments`
+--
+ALTER TABLE `assignments`
+  MODIFY `ASSINGMENT_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=993;
+
+--
+-- AUTO_INCREMENT for table `groups`
+--
+ALTER TABLE `groups`
+  MODIFY `GROUP_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1251;
+
+--
+-- AUTO_INCREMENT for table `lectures`
+--
+ALTER TABLE `lectures`
+  MODIFY `LECTURE_ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `advising`
+--
+ALTER TABLE `advising`
+  ADD CONSTRAINT `ADVISING_LECTURER_ID` FOREIGN KEY (`LECTURER_ID`) REFERENCES `lecturers` (`ID`),
+  ADD CONSTRAINT `ADVISING_STUDENT_ID` FOREIGN KEY (`STUDENT_ID`) REFERENCES `students` (`ID`);
+
+--
+-- Constraints for table `assignments`
+--
+ALTER TABLE `assignments`
+  ADD CONSTRAINT `ASSINGMENT_COURSE_NUMBER` FOREIGN KEY (`COURSE_NUMBER`) REFERENCES `courses` (`COURSE_NUMBER`);
+
+--
+-- Constraints for table `departments`
+--
+ALTER TABLE `departments`
+  ADD CONSTRAINT `DEPARTMENT_BUILDING_ID` FOREIGN KEY (`BUILDING_ID`) REFERENCES `buildings` (`ID`);
+
+--
+-- Constraints for table `groups`
+--
+ALTER TABLE `groups`
+  ADD CONSTRAINT `groups_ibfk_1` FOREIGN KEY (`COURSE_NUMBER`) REFERENCES `courses` (`COURSE_NUMBER`),
+  ADD CONSTRAINT `groups_ibfk_2` FOREIGN KEY (`LECTURER_ID`) REFERENCES `lecturers` (`ID`);
+
+--
+-- Constraints for table `head_of_department`
+--
+ALTER TABLE `head_of_department`
+  ADD CONSTRAINT `head_of_department_ibfk_1` FOREIGN KEY (`DEPARTMENT_HEAD`) REFERENCES `lecturers` (`ID`),
+  ADD CONSTRAINT `head_of_department_ibfk_2` FOREIGN KEY (`DEPARTMENT_ID`) REFERENCES `departments` (`DEPARTMENT_ID`);
+
+--
+-- Constraints for table `lecturers`
+--
+ALTER TABLE `lecturers`
+  ADD CONSTRAINT `LECTURER_IS_PERSON` FOREIGN KEY (`ID`) REFERENCES `person` (`ID`);
+
+--
+-- Constraints for table `lecturer_in_department`
+--
+ALTER TABLE `lecturer_in_department`
+  ADD CONSTRAINT `lecturer_in_department_ibfk_1` FOREIGN KEY (`DEPARTMENT_ID`) REFERENCES `departments` (`DEPARTMENT_ID`),
+  ADD CONSTRAINT `lecturer_in_department_ibfk_2` FOREIGN KEY (`LECTURER_ID`) REFERENCES `lecturers` (`ID`);
+
+--
+-- Constraints for table `lectures`
+--
+ALTER TABLE `lectures`
+  ADD CONSTRAINT `LECTUR_IS_IN_BUILDING_ID` FOREIGN KEY (`BUILDING_ID`,`ROOM_NUMBER`) REFERENCES `rooms` (`BUILDING_ID`, `ROOM_NUMBER`),
+  ADD CONSTRAINT `lectures_ibfk_1` FOREIGN KEY (`GROUP_ID`) REFERENCES `groups` (`GROUP_ID`);
+
+--
+-- Constraints for table `rooms`
+--
+ALTER TABLE `rooms`
+  ADD CONSTRAINT `ROOM_IN_BUILDING` FOREIGN KEY (`BUILDING_ID`) REFERENCES `buildings` (`ID`);
+
+--
+-- Constraints for table `students`
+--
+ALTER TABLE `students`
+  ADD CONSTRAINT `STUDENT_IS_PERSON_ID` FOREIGN KEY (`ID`) REFERENCES `person` (`ID`);
+
+--
+-- Constraints for table `students_in_groups`
+--
+ALTER TABLE `students_in_groups`
+  ADD CONSTRAINT `students_in_groups_ibfk_1` FOREIGN KEY (`GROUP_ID`) REFERENCES `groups` (`GROUP_ID`),
+  ADD CONSTRAINT `students_in_groups_ibfk_2` FOREIGN KEY (`STUDENT_ID`) REFERENCES `students` (`ID`);
