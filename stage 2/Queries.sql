@@ -140,7 +140,7 @@ DELETE * FROM groups
 WHERE
     GROUP_ID IN(
     SELECT
-        COUNT(*)
+        *
     FROM
         groups g
     WHERE
