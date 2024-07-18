@@ -1,21 +1,21 @@
 -- dropTables.sql
+
+
 SET FOREIGN_KEY_CHECKS = 1;
 DROP TABLE IF EXISTS `head_of_department`;
-DROP TABLE IF EXISTS `teaching`;
+DROP TABLE IF EXISTS `students_in_groups`;
 DROP TABLE IF EXISTS `advising`;
 DROP TABLE IF EXISTS `lecturer_in_department`;
 DROP TABLE IF EXISTS `lectures`;
-DROP TABLE IF EXISTS `assingments`;
+DROP TABLE IF EXISTS `assignments`;
 DROP TABLE IF EXISTS `departments`;
+DROP TABLE IF EXISTS `groups`;
 DROP TABLE IF EXISTS `courses`;
 DROP TABLE IF EXISTS `rooms`;
 DROP TABLE IF EXISTS `buildings`;
 DROP TABLE IF EXISTS `lecturers`;
 DROP TABLE IF EXISTS `students`;
 DROP TABLE IF EXISTS `person`;
-
-
-
 
 --### Order of Dropping Tables
 
