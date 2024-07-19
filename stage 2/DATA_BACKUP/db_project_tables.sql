@@ -475,8 +475,9 @@ ALTER TABLE `head_of_department`
 -- Constraints for table `lecturers`
 --
 ALTER TABLE `lecturers`
-  ADD CONSTRAINT `LECTURER_IS_PERSON` FOREIGN KEY (`ID`) REFERENCES `person` (`ID`);
-
+  ADD CONSTRAINT `LECTURER_IS_PERSON` FOREIGN KEY (`ID`) REFERENCES `person` (`ID`),
+  ADD CONSTRAINT chk_salary CHECK (salary >= 0),
+  MODIFY `SALARY` int(11) DEFAULT 0;
 --
 -- Constraints for table `lecturer_in_department`
 --
